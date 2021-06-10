@@ -1,15 +1,21 @@
 const { Recipe, Ingrediant } = require('../db/models');
 
 async function getIngrediants (ingrediantIds) {
-  let arrayString = `[${ingrediantIds.join(',')}]`;
-  let ingrediants = Ingrediant.$where(`${arrayString}.includes(this._id)`).exec();
+  let ingrediants = Ingrediant.find({
+    '_id': {
+      $in: ingrediantIds
+    }
+  }).exec();
   console.log(ingrediants);
   return [];
 }
 
 async function getRecipes (recipeIds) {
-  let arrayString = `[${recipeIds.join(',')}]`;
-  let recipes = Recipe.$where(`${arrayString}.includes(this._id)`).exec();
+  let recipes = Recipe.find({
+    '_id': {
+      $in: recipeIds
+    }
+  }).exec();
   for (let recipe of recipes) {
     recipe.ingrediantList = getIngrediants(recipe.ingrediants);
   }
