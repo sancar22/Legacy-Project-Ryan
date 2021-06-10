@@ -1,8 +1,4 @@
 const router = require('express').Router();
-
-
-router.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+require('../controller').initRoutes(router);
 
 module.exports = router;

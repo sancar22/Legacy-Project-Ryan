@@ -5,6 +5,8 @@ const models = require('./db/models');
 
 const app = new Express();
 
+app.use(Express.json());
+
 app.use(router);
 
 console.log('Server starting');
