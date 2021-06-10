@@ -1,1 +1,1 @@
-web: npx server/index.js
+web: npx ./server/index.js
