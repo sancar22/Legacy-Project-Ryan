@@ -3,4 +3,4 @@ const InvalidToken = index.mongoose.model('InvalidToken', {
   token: String
 });
 
-module.exports = User;
+module.exports = InvalidToken;

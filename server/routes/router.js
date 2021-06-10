@@ -1,4 +1,5 @@
 const router = require('express').Router();
-require('../controller').initRoutes(router);
+const controller = require('../controller');
+controller.initRoutes(router);
 
 module.exports = router;

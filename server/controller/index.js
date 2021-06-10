@@ -15,4 +15,6 @@ function initRoutes (router) {
   }
 }
 
-module.exports = initRoutes;
+module.exports = {
+  initRoutes
+};
