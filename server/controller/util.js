@@ -1,7 +1,7 @@
 const { Recipe, Ingrediant } = require('../db/models');
 
 async function getIngrediants (ingrediantIds) {
-  let ingrediants = Ingrediant.find({
+  let ingrediants = await Ingrediant.find({
     '_id': {
       $in: ingrediantIds
     }
@@ -11,11 +11,12 @@ async function getIngrediants (ingrediantIds) {
 }
 
 async function getRecipes (recipeIds) {
-  let recipes = Recipe.find({
+  let recipes = await Recipe.find({
     '_id': {
       $in: recipeIds
     }
   }).exec();
+  console.log(recipes);
   for (let recipe of recipes) {
     recipe.ingrediantList = getIngrediants(recipe.ingrediants);
   }
