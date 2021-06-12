@@ -5,7 +5,7 @@ async function postRecipeFromUrl (req, res) {
   const { url } = req.body;
   
   try {
-    let recipeData = await recipeParser.parse(url);
+    let recipeData = await recipeParser(url);
     let newRecipe = new Recipe(recipeData);
     await newRecipe.save();
     
