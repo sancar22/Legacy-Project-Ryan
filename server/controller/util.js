@@ -7,7 +7,7 @@ async function getIngrediants (ingrediantIds) {
     }
   }).exec();
   console.log(ingrediants);
-  return [];
+  return ingrediants;
 }
 
 async function getRecipes (recipeIds) {
@@ -20,8 +20,7 @@ async function getRecipes (recipeIds) {
   for (let recipe of recipes) {
     recipe.ingrediantList = getIngrediants(recipe.ingrediants);
   }
-  console.log(recipes);
-  return [];
+  return recipes;
 }
 
 module.exports = {

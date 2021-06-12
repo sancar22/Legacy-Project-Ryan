@@ -10,18 +10,7 @@ async function getRecipe (req, res) {
     .select('-_id -__v')
     .exec();
   if (foundRecipe) {
-    let ingrediants = await util.getIngrediants(foundRecipe.ingrediants);
-    return res.status(200).send({
-      name: foundRecipe.name,
-      timeRequiredMinutes: foundRecipe.timeRequiredMinutes,
-      complexity: foundRecipe.complexity,
-      step: foundRecipe.steps,
-      specialConsiderations: foundRecipe.specialConsiderations,
-      imageUrl: foundRecipe.imageUrl,
-      ingrediants,
-      ingrediantQuantities: foundRecipe.ingrediantQuantities,
-      tags: foundRecipe.typeTags
-    });
+    return res.status(200).send(foundRecipe);
   }
   return res.status(200).send({});
 }

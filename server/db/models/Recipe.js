@@ -1,20 +1,15 @@
 const index = require('../index');
 const Recipe = index.mongoose.model('Recipe', {
-  name: String,
-  typeTags: [String],
+  name: {
+    type: String,
+    required: true
+  },
+  tags: [String],
   timeRequiredMinutes: {
     type: Number,
     required: true
   },
-  complexity: {
-    type: String,
-    required: true
-  },
   steps: {
-    type: [String],
-    required: true
-  },
-  specialConsiderations: {
     type: [String],
     required: true
   },
@@ -26,10 +21,8 @@ const Recipe = index.mongoose.model('Recipe', {
     type: [String],
     required: true
   },
-  ingrediantQuantities: {
-    type: [String],
-    required: true
-  }
+  yields: String,
+  parsedFrom: String
 });
 
 module.exports = Recipe;
