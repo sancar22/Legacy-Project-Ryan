@@ -4,6 +4,11 @@ async function postRecipe (req, res) {
   const { name, typeTags, timeRequiredMinutes, complexity, steps, specialConsiderations, imageUrl, ingrediants, ingrediantQuantities } = req.body;
   
   try {
+
+    let currentRecipe = await Recipe.find({name: name});
+    if (currentRecipe) {
+      return res.status(200).send('Recipe already exists');
+    }
     let newRecipe = new Recipe({ name, typeTags, timeRequiredMinutes, complexity, steps, specialConsiderations, imageUrl, ingrediants, ingrediantQuantities });
     await newRecipe.save();
     
