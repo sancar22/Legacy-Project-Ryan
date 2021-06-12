@@ -11,7 +11,7 @@ async function postRecipeFromUrl (req, res) {
     
     return res.status(201).end();
   } catch (e) {
-    res.status(400).send({error: `Unable to parse from [${url}]`});
+    res.status(400).send({error: `Unable to parse from [${url}]`, exception: e});
   }
 }
 
