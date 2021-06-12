@@ -1,7 +1,7 @@
 const { Recipe, Ingrediant } = require('../db/models');
 const util = require('./util');
 
-async function getRecipe (req, res) {
+async function getRecipes (req, res) {
     let limit = req.params.limit;
     if (!limit || limit > 50) limit = 50;
     let foundRecipes = await Recipe.find()
