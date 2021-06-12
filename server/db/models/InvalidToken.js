@@ -20,7 +20,7 @@ setInterval(async () => {
       $in: invalidTokens
     }
   }).exec();
-}, 3600000);
+}, 300000);
 
 
 module.exports = InvalidToken;
