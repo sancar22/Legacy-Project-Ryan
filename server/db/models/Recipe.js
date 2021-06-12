@@ -7,7 +7,8 @@ const Recipe = index.mongoose.model('Recipe', {
   tags: [String],
   timeRequiredMinutes: {
     type: Number,
-    required: true
+    required: true,
+    default: -1
   },
   steps: {
     type: [String],
