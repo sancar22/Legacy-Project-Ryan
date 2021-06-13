@@ -2,7 +2,7 @@ const { Recipe, Ingrediant } = require('../db/models');
 const util = require('./util');
 
 async function getRecipes (req, res) {
-    let limit = req.params.limit;
+    let limit = Number(req.query.limit);
     let searchObject = {};
     if (req.query.next) {
         searchObject = {
@@ -11,7 +11,9 @@ async function getRecipes (req, res) {
             }
         };
     }
-    if (!limit || limit > 50) limit = 50;
+    if (!limit || Number.isNaN(limit) || limit > 50) limit = 50;
+    if (limit < 1) limit = 1;
+    limit = Math.floor(limit);
     let foundRecipes = await Recipe.find(searchObject)
         .select('-__v')
         .limit(limit)
