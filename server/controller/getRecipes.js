@@ -7,7 +7,7 @@ async function getRecipes (req, res) {
     if (req.query.next) {
         searchObject = {
             _id: {
-                $gt: next
+                $gt: req.query.next
             }
         };
     }
