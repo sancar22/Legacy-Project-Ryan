@@ -4,8 +4,7 @@ const util = require('./util');
 async function getRecipes (req, res) {
     let limit = req.params.limit;
     let searchObject = {};
-    console.log(req.params);
-    if (req.params.next) {
+    if (req.query.next) {
         searchObject = {
             _id: {
                 $gt: next
@@ -31,7 +30,7 @@ async function getRecipes (req, res) {
             ingrediants: recipe.ingrediants
         };
     }
-    
+
     if (foundRecipes.length === limit) {
         result.next = foundRecipes[foundRecipes.length - 1]._id;
     }
