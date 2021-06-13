@@ -20,7 +20,7 @@ async function getRecipes (req, res) {
     let result = {};
     for (let recipe of foundRecipes) {
         result[recipe.name] = {
-            name: foundRecipe.name,
+            name: recipe.name,
             timeRequiredMinutes: recipe.timeRequiredMinutes,
             complexity: recipe.complexity,
             step: recipe.steps,
