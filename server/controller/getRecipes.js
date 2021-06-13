@@ -17,7 +17,6 @@ async function getRecipes (req, res) {
         .select('-__v')
         .limit(limit)
         .exec();
-        console.log(foundRecipes.length);
     let result = {};
     for (let recipe of foundRecipes) {
         result[recipe.name] = {
@@ -32,11 +31,10 @@ async function getRecipes (req, res) {
             ingrediants: recipe.ingrediants
         };
     }
-
+    
     if (foundRecipes.length === limit) {
         result.next = foundRecipes[foundRecipes.length - 1]._id;
     }
-    console.log(result);
     return res.status(200).send(result);
 }
 
