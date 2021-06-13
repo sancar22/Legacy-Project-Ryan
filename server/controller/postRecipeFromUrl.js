@@ -8,6 +8,7 @@ async function postRecipeFromUrl (req, res) {
     let recipeData = await recipeParser(url);
     let currentRecipe = await Recipe.find({name: recipeData.name});
     if (currentRecipe) {
+      console.log(currentRecipe);
       return res.status(200).send('Recipe already exists');
     }
     let newRecipe = new Recipe(recipeData);
