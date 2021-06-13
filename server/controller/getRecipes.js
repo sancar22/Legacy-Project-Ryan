@@ -4,6 +4,7 @@ const util = require('./util');
 async function getRecipes (req, res) {
     let limit = req.params.limit;
     let searchObject = {};
+    console.log(req.params);
     if (req.params.next) {
         searchObject = {
             _id: {
