@@ -12,7 +12,7 @@ setInterval(async () => {
     try {
       jwt.verify(token, process.env.JWT_SECRET);
     } catch (e) {
-      invalidTokens.push(token);
+      invalidTokens.push(token.token);
     }
   }
   await InvalidToken.deleteMany({

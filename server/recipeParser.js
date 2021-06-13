@@ -22,7 +22,6 @@ let mappingValues = {
 
 
 async function parse (url) {
-    console.log(url);
     return fetch(url).then(res => {
         if (res.ok) {
             return res.text().then(res => {
@@ -39,7 +38,6 @@ async function parse (url) {
 }
 
 function parseJsonLDtoRecipe(root) {
-    console.log(root);
     let res = {
         steps: [],
         ingrediants: []
@@ -57,8 +55,6 @@ function parseJsonLDtoRecipe(root) {
     res.yields = root.recipeYield;
     res.parsedFrom = root.url;
     res.imageUrl = root.thumbnailUrl;
-
-    console.log(res);
     return res;
 }
 
