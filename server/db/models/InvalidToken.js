@@ -1,8 +1,8 @@
-const index = require('../index');
 const jwt = require('jsonwebtoken');
+const index = require('../index');
 
 const InvalidToken = index.mongoose.model('InvalidToken', {
-  token: String
+  token: String,
 });
 
 setInterval(async () => {
@@ -17,10 +17,9 @@ setInterval(async () => {
   }
   await InvalidToken.deleteMany({
     token: {
-      $in: invalidTokens
-    }
+      $in: invalidTokens,
+    },
   }).exec();
 }, 300000);
-
 
 module.exports = InvalidToken;

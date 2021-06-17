@@ -1,20 +1,20 @@
 const { Recipe, Ingrediant } = require('../db/models');
 
-async function getIngrediants (ingrediantIds) {
+async function getIngrediants(ingrediantIds) {
   let ingrediants = await Ingrediant.find({
-    '_id': {
-      $in: ingrediantIds
-    }
+    _id: {
+      $in: ingrediantIds,
+    },
   }).exec();
   console.log(ingrediants);
   return ingrediants;
 }
 
-async function getRecipes (recipeIds) {
+async function getRecipes(recipeIds) {
   let recipes = await Recipe.find({
-    '_id': {
-      $in: recipeIds
-    }
+    _id: {
+      $in: recipeIds,
+    },
   }).exec();
   console.log(recipes);
   for (let recipe of recipes) {
@@ -25,5 +25,5 @@ async function getRecipes (recipeIds) {
 
 module.exports = {
   getIngrediants,
-  getRecipes
+  getRecipes,
 };
