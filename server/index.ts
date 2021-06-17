@@ -1,7 +1,6 @@
 const Express = require('express');
 require('dotenv').config();
 const router = require('./routes/router');
-
 const app = new Express();
 
 app.use(Express.json());
@@ -10,7 +9,7 @@ app.use(router);
 
 console.log('Server starting');
 
-app.use('*', (req, res) => {
+app.use('*', (req: any, res: any) => {
   res.status(404).send('404 Not Found');
 });
 
